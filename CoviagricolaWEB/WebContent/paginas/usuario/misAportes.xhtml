@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Personal</h1>
+
+			<h:form id="formMisAportes">
+				<p:panel id="panel" header="Mis aportes">
+				
+				    <p:dataTable var="aporte" value="#{misAportesMB.listaAportes}" filteredValue="#{misAportesMB.listaAportesFiltrada}" widgetVar="tablaMisAportes">
+						<p:column filterBy="#{aporte.fecha}" headerText="Fecha" filterMatchMode="contains" sortBy="#{aporte.fecha}">
+							<h:outputText value="#{aporte.fecha}">
+							</h:outputText>
+						</p:column>						
+
+						<p:column filterBy="#{aporte.vencimiento}" headerText="Fecha de vencimiento" filterMatchMode="contains" sortBy="#{aporte.vencimiento}">
+							<h:outputText value="#{aporte.vencimiento}" />
+						</p:column>		
+
+						<p:column headerText="Monto" >
+							<h:outputText value="#{aporte.monto}" />
+						</p:column>
+
+						<p:column headerText="Estado" >
+							<h:outputText value="#{aporte.estado}" />
+						</p:column>
+					
+
+						<p:column headerText="Acciones">
+						<p:button value="Ver" outcome="agregarPago.xhtml?faces-redirect=true">
+							<f:param name="aporte" value="#{aporte.id}"></f:param>
+						</p:button>
+						<p:button value="Pagar" outcome="agregarPago.xhtml?faces-redirect=true">
+							<f:param name="aporte" value="#{aporte.id}" ></f:param>
+						</p:button>								
+						
+						</p:column>
+					</p:dataTable>
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

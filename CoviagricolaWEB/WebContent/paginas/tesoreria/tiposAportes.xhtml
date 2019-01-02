@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body>
+
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+			<script type="text/javascript">
+			    function handleLoginRequest(xhr, status, args) {
+			        if(args.validationFailed || !args.agregarOk) {
+			            PF('dlg').jq.effect("shake", {times:5}, 100);
+			        }
+			        else {
+			            PF('dlg').hide();
+			            $('#loginLink').fadeOut();
+			        }
+			    }
+			</script> 
+			
+	        <h1 class="page-header">Tesoreria</h1>
+
+			<h:form id="formAgregarTipoAporte">
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+				
+				<p:panel id="panel" header="Tipo de aportes" styleClass="page-header">
+				
+				    <p:dataTable id="tablaTipoAportes" var="tipoAporte" value="#{tipoAporteMB.listaTipoAportes}" widgetVar="tablaTipoAporte" emptyMessage="No existen tipos de pago" >
+				    
+				    	<p:column headerText="Codigo">
+							<h:outputText value="#{tipoAporte.codigo}" />
+						</p:column>						
+				    	<p:column headerText="Descripcion">
+							<h:outputText value="#{tipoAporte.descripcion}" />
+						</p:column>						
+				    	
+
+					</p:dataTable>
+					    <p:commandButton value="Agregar" onclick="PF('dlg').show();" type="button" icon="pi pi-home" />
+     
+						    <p:dialog header="Agregar tipo de aporte" widgetVar="dlg" focus="codigo">
+						        <h:panelGrid columns="3" cellpadding="5">
+						            <h:outputLabel for="codigo" value="Codigo:" />
+						            <p:inputText id="codigo" label="codigo" required="true" value="#{tipoAporteMB.tipoAporteNuevo.codigo}"/>
+						            <p:message for="codigo" display="icon" />
+						            
+						             
+						            <h:outputLabel for="descripcion" value="Descripcion:" />
+						            <p:inputText id="descripcion" label="descripcion" required="true" value="#{tipoAporteMB.tipoAporteNuevo.descripcion}"/>
+						            <p:message for="descripcion" display="icon" />
+						            
+						        </h:panelGrid>
+						                    <f:facet name="footer">
+						     <p:commandButton update="tablaTipoAportes" value="Agregar" action="#{tipoAporteMB.agregar}" oncomplete="handleLoginRequest(xhr, status, args)" />
+						 </f:facet>
+						    </p:dialog>     
+ 							
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

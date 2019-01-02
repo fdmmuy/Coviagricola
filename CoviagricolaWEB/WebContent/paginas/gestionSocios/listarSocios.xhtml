@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Gestion de socios</h1>
+
+			<h:form id="formAgregarSocio">
+				<p:panel id="panel" header="Lista de socios">
+				
+				    <p:dataTable var="socio" value="#{listaSociosMB.listaSocios}" widgetVar="tablaSocios" filteredValue="#{listaSociosMB.listaSociosFiltrada}"
+						emptyMessage="No existe socios" >
+						
+						<p:column filterBy="#{socio.nroSocio}" headerText="Nro. socio" filterMatchMode="contains" sortBy="#{socio.nroSocio}">
+							<h:outputText value="#{socio.nroSocio}" />
+						</p:column>						
+                 
+						<p:column filterBy="#{socio.ci}-#{socio.barraCi}" headerText="CI" filterMatchMode="contains" sortBy="#{socio.ci}-#{socio.barraCi}">
+							<h:outputText value="#{socio.ci}-#{socio.barraCi}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.primerNombre} #{socio.primerApellido}" headerText="Nombre" filterMatchMode="contains" sortBy="#{socio.primerNombre} #{socio.primerApellido}">
+							<h:outputText value="#{socio.primerNombre} #{socio.primerApellido}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.cantDormitorios}" headerText="Dormitorios" filterMatchMode="contains" sortBy="#{socio.cantDormitorios}">
+							<h:outputText value="#{socio.cantDormitorios}" />
+						</p:column>
+                 
+						<p:column filterBy="#{socio.telefono}" headerText="Telefono" filterMatchMode="contains" sortBy="#{socio.telefono}">
+							<h:outputText value="#{socio.telefono}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.celular}" headerText="Celular" filterMatchMode="contains" sortBy="#{socio.celular}">
+							<h:outputText value="#{socio.celular}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.email}" headerText="Correo electronico" filterMatchMode="contains" sortBy="#{socio.email}">
+							<h:outputText value="#{socio.email}" />
+						</p:column>
+						
+						<p:column  headerText="Acciones" >
+							<p:link outcome="verSocio.xhtml" title="Ver">
+								<i class="fa fa-fw fa-eye"></i>
+								<f:param name="socio" value="#{socio.nroSocio}" />
+							</p:link>
+							<p:link outcome="editarSocio.xhtml" title="Editar">
+								<i class="fa fa-fw fa-edit"></i>
+								<f:param name="socio" value="#{socio.nroSocio}" />
+							</p:link>
+
+						</p:column>
+						
+
+					</p:dataTable>
+ 
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

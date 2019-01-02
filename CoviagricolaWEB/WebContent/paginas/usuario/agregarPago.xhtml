@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header" >Personal</h1>
+
+			<h:form id="formAgregarPagp">
+				<p:panel id="panel" header="Agregar pago">
+				
+				
+					<h4>Datos de la cuota</h4>
+					<p:separator />
+					
+					<h:panelGrid columns="3" cellpadding="10">
+						
+						<p:outputLabel for="fecha" value="Fecha: "></p:outputLabel>
+						<p:outputLabel  id="fecha" value="#{agregarPagoMB.aporte.fecha}"></p:outputLabel>		
+						<p:message for="fecha" display="icon" />
+						
+						<p:outputLabel for="vencimiento" value="Vencimiento: "></p:outputLabel>
+						<p:outputLabel  id="vencimiento" value="#{agregarPagoMB.aporte.vencimiento}"></p:outputLabel>		
+						<p:message for="vencimiento" display="icon" />
+						
+						<p:outputLabel for="monto" value="Monto: "></p:outputLabel>
+						<p:outputLabel  id="monto" value="#{agregarPagoMB.aporte.monto}"></p:outputLabel>		
+						<p:message for="monto" display="icon" />
+
+						<p:outputLabel for="estado" value="Estado: "></p:outputLabel>
+						<p:outputLabel  id="estado" value="#{agregarPagoMB.aporte.estado}"></p:outputLabel>		
+						<p:message for="estado" display="icon" />
+
+					</h:panelGrid>
+					
+					<br/><br/><br/>
+					
+					<h4>Ingresar nuevo pago</h4>
+					<p:separator />					
+					<h:panelGrid columns="3" cellpadding="10">
+
+						<p:outputLabel for="montoIngresado" value="Monto a ingresar: "></p:outputLabel>
+						<p:inputText  id="montoIngresado" value="#{agregarPagoMB.pago.montoIngresado}" required="true"></p:inputText>		
+						<p:message for="montoIngresado" display="icon" />
+						
+						<p:outputLabel for="observaciones" value="Observaciones: "></p:outputLabel>
+						<p:inputTextarea  id="observaciones" value="#{agregarPagoMB.pago.observaciones}"></p:inputTextarea>		
+						<p:message for="observaciones" display="icon" />						
+					
+						<p:commandButton value="Agregar pago" action="#{agregarPagoMB.agregarPago}" update="panel"></p:commandButton>	
+					
+					</h:panelGrid>
+					
+					<br/><br/><br/>
+					
+					<h4>Lista de pagos</h4>
+					<p:separator />					
+					
+					<p:dataTable id="tablaPagos" var="pago" value="#{agregarPagoMB.listaPagos}" widgetVar="tablaPagos" emptyMessage="No hay pagos ingresados" >
+					
+						<p:column headerText="Fecha ingreso">
+							<h:outputText value="#{pago.fechaIngresado}" />
+						</p:column>							
+						<p:column headerText="Pago ingresado">
+							<h:outputText value="#{pago.montoIngresado}" />
+						</p:column>						
+						<p:column headerText="Pago aprobado">
+							<h:outputText value="#{pago.montoAprobado}" />
+						</p:column>							
+						<p:column headerText="Estado">
+							<h:outputText value="#{pago.estado}" />
+						</p:column>							
+					
+					</p:dataTable>
+					
+					
+					
+					
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

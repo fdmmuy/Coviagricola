@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CoviagricolaEAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="CoviagricolaWEB.war" deploy-path="/" handle="module:/resource/CoviagricolaWEB/CoviagricolaWEB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CoviagricolaEJB.jar" deploy-path="/" handle="module:/resource/CoviagricolaEJB/CoviagricolaEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CoviagricolaEJBClient.jar" deploy-path="/" handle="module:/resource/CoviagricolaEJBClient/CoviagricolaEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CoviagricolaJPA.jar" deploy-path="/" handle="module:/resource/CoviagricolaJPA/CoviagricolaJPA">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.3-tests.jar" deploy-path="/lib" handle="module:/classpath/lib//home/fmaldonado/Descargas/commons-beanutils-1.9.3-tests.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.3-test-sources.jar" deploy-path="/lib" handle="module:/classpath/lib//home/fmaldonado/Descargas/commons-beanutils-1.9.3-test-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.3-javadoc.jar" deploy-path="/lib" handle="module:/classpath/lib//home/fmaldonado/Descargas/commons-beanutils-1.9.3-javadoc.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.3.jar" deploy-path="/lib" handle="module:/classpath/lib//home/fmaldonado/Descargas/commons-beanutils-1.9.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.9.3-sources.jar" deploy-path="/lib" handle="module:/classpath/lib//home/fmaldonado/Descargas/commons-beanutils-1.9.3-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

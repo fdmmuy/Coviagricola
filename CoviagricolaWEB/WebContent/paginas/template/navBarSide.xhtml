@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+</h:head> 
+<h:body>
+	 <ui:composition>
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <!-- sidebar-collapse -->
+            <div class="sidebar-collapse">
+                <!-- side-menu -->
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <!-- user image section-->
+                        <div class="user-section">
+                            <div class="user-section-inner">
+                                <img src="/Coviagricola/paginas/assets/img/user.jpg" alt=""></img>
+                            </div>
+                            <div class="user-info">
+                                <div style="font-size: 17px">#{infoSessionMB.nombre}</div>  
+                                <div style="font-size: 15px">Usuario</div>                                
+                                                              
+                            </div>
+                        </div>
+                        <!--end user image section-->
+                    </li>
+                    <li>
+                        <a href="/Coviagricola/paginas/usuario/noticias.xhtml">Noticias</a>
+                    </li>
+                    <li>
+                        <a href="#">Mis datos</a>
+                    </li>
+                    <li>
+                        <a href="/Coviagricola/paginas/usuario/misAportes.xhtml">Mis cuotas</a>
+                    </li>
+                     <li>
+                        <a href="#">Mis pagos</a>
+                    </li>
+                    <li>
+                        <a href="#">Reglamentos</a>
+                    </li>
+                    <li>
+                        <a href="#">Actas</a>
+                    </li>
+                    <h:panelGroup rendered="true">
+                   <li>
+                        <a href="#">Gestion de socios<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Coviagricola/paginas/gestionSocios/listarSocios.xhtml">Ver socios</a>
+                            </li>
+                            <li>
+                                <a href="/Coviagricola/paginas/gestionSocios/agregarSocio.xhtml">Agregar socios</a>
+                            </li>
+
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+ 
+                   </h:panelGroup>
+                   <h:panelGroup rendered="true">
+                   <li>
+                        <a href="#">Tesoreria<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Coviagricola/paginas/tesoreria/agregarAporte.xhtml">Agregar aportes</a>
+                            </li>
+							<li>
+                                <a href="/Coviagricola/paginas/tesoreria/verPagos.xhtml">Ver Pagos</a>
+                            </li>
+                            <li>
+                                <a href="/Coviagricola/paginas/tesoreria/tiposAportes.xhtml">Tipo de aportes</a>
+                            </li>
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+                    </h:panelGroup>
+                   <h:panelGroup rendered="true">
+                   <li>
+                        <a href="#">Comision fiscal<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="panels-wells.html">Ver socios</a>
+                            </li>
+                            <li>
+                                <a href="buttons.html">Agregar socios</a>
+                            </li>
+
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+                    </h:panelGroup>
+                    
+
+                </ul>
+                <!-- end side-menu -->
+            </div>
+            <!-- end sidebar-collapse -->
+        </nav>
+        
+
+	 </ui:composition> 
+
+</h:body> 
+</html>

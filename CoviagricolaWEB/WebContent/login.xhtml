@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+<head>
+  <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <title>Coviagricola 1</title>
+    <!-- Core CSS - Include with every page -->
+    <link href="/Coviagricola/paginas/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="/Coviagricola/paginas/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Coviagricola/paginas/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+   <link href="/Coviagricola/paginas/assets/css/style.css" rel="stylesheet" />
+      <link href="/Coviagricola/paginas/assets/css/main-style.css" rel="stylesheet" />
+
+</head>
+
+<body class="body-Login-back">
+
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
+                </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">                  
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Iniciar sesión</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="j_security_check">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" type="text" id="j_username" name="j_username"></input>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" type="password" id="j_password" name="j_password"></input>
+                                </div>
+
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input type="submit" name="submit" value="Iniciar sesión" class="btn btn-lg btn-success btn-block"/>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Core Scripts - Include with every page -->
+    <script src="/Coviagricola/paginas/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="/Coviagricola/paginas/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/Coviagricola/paginas/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+</body>
+
+</html>

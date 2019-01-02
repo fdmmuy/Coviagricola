@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Gestion de socios</h1>
+
+				<p:panel id="panel" header="Agregar socio">
+ 
+					<p:messages id="msgs" />
+ 
+					<h:panelGrid columns="3" cellpadding="10">
+					
+						<p:outputLabel for="nroSocio" value="Numero de socio:" />
+						<p:outputLabel id="nroSocio" value="#{verSocioMB.socio.nroSocio}" required="true" label="nroSocio" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="nroSocio" display="icon" />
+
+						<p:outputLabel for="ci" value="CI:" />
+				        <p:outputLabel id="ci" value="#{verSocioMB.socio.ci}-#{verSocioMB.socio.barraCi}" mask="9999999-9" required="true" disabled="true"/>
+						<p:message for="ci" display="icon" />
+				        
+						<p:outputLabel for="fechaIngreso" value="Fecha de ingreso:" />
+						<p:calendar id="fechaIngreso" value="#{verSocioMB.socio.fechaIngreso}" locale="es" pattern="dd-MM-yyyy" mask="true" required="true" disabled="true"/>
+						<p:message for="fechaIngreso" display="icon" />
+						
+						<p:outputLabel for="fechaEgreso" value="Fecha de ingreso:"/>
+						<p:calendar id="fechaEgreso" value="#{verSocioMB.socio.fechaEgreso}" pattern="dd-MM-yyyy" mask="true" disabled="true"/>
+						<p:message for="fechaEgreso" display="icon" />
+
+						<p:outputLabel for="activo" value="Activo:" required="true"/>
+						<p:outputLabel id="activo" value="#{verSocioMB.socio.activo ? 'Si' : 'No'}" disabled="true"/>
+						<p:message for="activo" display="icon" />
+						
+						<p:outputLabel for="jubilado" value="Jubilado:" required="true"/>
+						<p:outputLabel id="jubilado" value="#{verSocioMB.socio.jubilado ? 'Si' : 'No'}" disabled="true"/>
+						<p:message for="jubilado" display="icon" />
+						
+						<p:outputLabel for="primerNombre" value="Primer nombre:" />
+						<p:outputLabel id="primerNombre" value="#{verSocioMB.socio.primerNombre}" required="true" label="primerNombre" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="primerNombre" display="icon" />
+
+						<p:outputLabel for="segundoNombre" value="Segundo nombre:" />
+						<p:outputLabel id="segundoNombre" value="#{verSocioMB.socio.segundoNombre}"  label="segundoNombre" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="segundoNombre" display="icon" />
+
+						<p:outputLabel for="primerApellido" value="Primer apellido:" />
+						<p:outputLabel id="primerApellido" value="#{verSocioMB.socio.primerApellido}" required="true" label="primerApellido" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="primerApellido" display="icon" />
+
+						<p:outputLabel for="segundoApellido" value="Segundo apellido:" />
+						<p:outputLabel id="segundoApellido" value="#{verSocioMB.socio.segundoApellido}" label="segundoApellido" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="segundoApellido" display="icon" />
+            			
+            			<p:outputLabel for="direccion" value="Direccion:" />
+						<p:outputLabel id="direccion" value="#{verSocioMB.socio.direccion}" required="true" label="direccion" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="direccion" display="icon" />
+
+            			<p:outputLabel for="direccionNumero" value="Numero:" />
+						<p:outputLabel id="direccionNumero" value="#{verSocioMB.socio.direccionNumero}" required="true" label="direccionNumero" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="direccionNumero" display="icon" />
+
+            			<p:outputLabel for="apto" value="Apto:" />
+						<p:outputLabel id="apto" value="#{verSocioMB.socio.apto}"  label="apto" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="apto" display="icon" />
+            			
+            			<p:outputLabel for="telefono" value="Telefono:" />
+						<p:outputLabel id="telefono" value="#{verSocioMB.socio.telefono}"  label="telefono" disabled="true">
+            			</p:outputLabel>
+            			<p:message for="telefono" display="icon" />
+            			
+						<p:outputLabel for="celular" value="Celular:" />
+				        <p:outputLabel id="celular" value="#{verSocioMB.socio.celular}" mask="999999999" required="true" disabled="true"/>
+            			<p:message for="celular" display="icon" />
+            			
+						<p:outputLabel for="email" value="E-mail:" />
+						<p:outputLabel id="email" value="#{verSocioMB.socio.email}" required="true" disabled="true" label="email" validatorMessage="El formato de correo electronico no es valido">
+ 						</p:outputLabel>
+            			<p:message for="email" display="icon" />
+
+
+             			
+						<p:outputLabel for="cantDormitorios" value="Cant. de dormitorios:" />
+						<p:outputLabel id="cantDormitorios" value="#{verSocioMB.socio.cantDormitorios}" style="width:175px" disabled="true">
+						</p:outputLabel>
+						<p:message for="cantDormitorios" display="icon" />
+						
+  					</h:panelGrid>
+  				</p:panel>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

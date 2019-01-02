@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Gestion de socios</h1>
+
+			<h:form id="formAgregarSocio">
+				<p:panel id="panel" header="Lista de pagos">
+				
+					<p:dataTable var="pago" value="#{verPagosMB.listaPagos}">
+					
+						<p:column headerText="Fecha">
+							<h:outputText value="#{pago.aporte.fecha}" />
+						</p:column>
+						
+						<p:column headerText="Tipo">
+							<h:outputText value="#{pago.aporte.tipoAporte}" />
+						</p:column>
+						
+						<p:column headerText="Monto">
+							<h:outputText value="#{pago.aporte.monto}" />
+						</p:column>
+						
+						<p:column headerText="Nro Socio">
+							<h:outputText value="#{pago.aporte.socio.nroSocio}" />
+						</p:column>
+						
+						<p:column headerText="CI">
+							<h:outputText value="#{pago.aporte.socio.ci}-#{pago.aporte.socio.barraCi}" />
+						</p:column>
+						
+						<p:column headerText="Nombre">
+							<h:outputText value="#{pago.aporte.socio.primerNombre} #{pago.aporte.socio.primerApellido}" />
+						</p:column>						
+
+						<p:column headerText="Fecha de ingreso">
+							<h:outputText value="#{pago.fechaIngresado}" />
+						</p:column>
+						
+						<p:column headerText="Monto ingresado">
+							<h:outputText value="#{pago.montoIngresado}" />
+						</p:column>
+					
+						<p:column headerText="Monto aprobado">
+							<h:outputText value="#{pago.montoAprobado}" />
+						</p:column>
+
+						<p:column headerText="Estado">
+							<h:outputText value="#{pago.estado}" />
+						</p:column>
+						
+						<p:column headerText="Acciones">
+							<p:link title="Ver">
+								<i class="fa fa-fw fa-eye"></i>
+								<f:param name="pago" value="#{pago.id}" />
+							</p:link>
+							<p:link  title="Editar">
+								<i class="fa fa-fw fa-building-o"></i>
+								<f:param name="pago" value="#{pago.id}" />
+							</p:link>
+						</p:column>							
+						
+					</p:dataTable>
+ 
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

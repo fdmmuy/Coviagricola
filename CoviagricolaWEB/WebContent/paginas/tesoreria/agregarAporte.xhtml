@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Tesoreria</h1>
+
+			<h:form id="formAgregarSocio">
+				<p:panel id="panel" header="Agregar aportes">
+				
+					<h:panelGrid columns="3">
+					
+						<p:outputLabel for="tipoAporte" value="Tipo de aporte"/>
+						<p:selectOneMenu value="#{agregarAporteMB.aporte.tipoAporte.id}" id="tipoAporte" required="true">
+							<f:selectItem itemLabel="Seleccione tipo de aporte" itemValue="" />
+							<f:selectItems value="#{agregarAporteMB.listaTipoAporte}" var="tipoAporte" 
+								itemLabel="#{tipoAporte.descripcion}" itemValue="#{tipoAporte.id}"/>
+						</p:selectOneMenu>
+						<p:message for="tipoAporte" display="icon" />
+						
+						
+						<p:outputLabel for="fecha" value="Fecha:" />
+						<p:calendar id="fecha" value="#{agregarAporteMB.aporte.fecha}" locale="es" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="fecha" display="icon" />
+
+						<p:outputLabel for="fechaVencimiento" value="Fecha de vencimiento:" />
+						<p:calendar id="fechaVencimiento" value="#{agregarAporteMB.aporte.vencimiento}" locale="es" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="fechaVencimiento" display="icon" />
+            			
+						<p:outputLabel for="monto" value="Monto:" />
+						<p:inputText id="monto" value="#{agregarAporteMB.aporte.monto}" required="true" label="monto">
+							<p:keyFilter regEx="/[\d\-]/"/>
+							<f:converter converterId="emptyToNullStringConverter"></f:converter>
+            			</p:inputText>
+            			<p:message for="monto" display="icon" />
+						
+					</h:panelGrid>
+				
+				    <p:separator />
+				    
+				    <p:dataTable var="socio" value="#{agregarAporteMB.listaSocios}" widgetVar="tablaSocios" filteredValue="#{agregarAporteMB.listaSociosFiltrada}"
+						emptyMessage="No existe socios" id="tablaSocios">
+						
+						<p:column headerText="" >
+							<f:facet name="header">
+								<h:selectBooleanCheckbox value="#{agregarAporteMB.seleccionarTodo}">
+									<f:ajax listener="#{agregarAporteMB.seleccionar}" render="tablaSocios" />
+							</h:selectBooleanCheckbox>
+							</f:facet>
+							<p:selectBooleanCheckbox value="#{socio.seleccionado}" />
+							
+						</p:column>
+						<p:column filterBy="#{socio.nroSocio}" headerText="Nro. socio" filterMatchMode="contains" sortBy="#{socio.nroSocio}">
+							<h:outputText value="#{socio.nroSocio}" />
+						</p:column>						
+                 
+						<p:column filterBy="#{socio.ci}-#{socio.barraCi}" headerText="CI" filterMatchMode="contains" sortBy="#{socio.ci}-#{socio.barraCi}">
+							<h:outputText value="#{socio.ci}-#{socio.barraCi}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.primerNombre} #{socio.primerApellido}" headerText="Nombre" filterMatchMode="contains" sortBy="#{socio.primerNombre} #{socio.primerApellido}">
+							<h:outputText value="#{socio.primerNombre} #{socio.primerApellido}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.cantDormitorios}" headerText="Dormitorios" filterMatchMode="contains" sortBy="#{socio.cantDormitorios}">
+							<h:outputText value="#{socio.cantDormitorios}" />
+						</p:column>
+                 
+						<p:column filterBy="#{socio.telefono}" headerText="Telefono" filterMatchMode="contains" sortBy="#{socio.telefono}">
+							<h:outputText value="#{socio.telefono}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.celular}" headerText="Celular" filterMatchMode="contains" sortBy="#{socio.celular}">
+							<h:outputText value="#{socio.celular}" />
+						</p:column>
+
+						<p:column filterBy="#{socio.email}" headerText="Correo electronico" filterMatchMode="contains" sortBy="#{socio.email}">
+							<h:outputText value="#{socio.email}" />
+						</p:column>
+						
+
+					</p:dataTable>
+					<p:commandButton value="agregar" action="#{agregarAporteMB.agregarAporte}" update="tablaSocios"></p:commandButton>						
+ 
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>

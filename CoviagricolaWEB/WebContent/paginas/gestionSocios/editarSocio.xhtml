@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+<h:head>
+
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style></h:head> 
+<body> 
+	<ui:composition template="/paginas/template/template.xhtml">
+	
+		<ui:define name="content">
+
+	        <h1 class="page-header">Gestion de socios</h1>
+
+			<h:form id="formAgregarSocio">
+
+				<p:panel id="panel" header="Agregar socio">
+ 
+					<p:messages id="msgs" />
+ 
+					<h:panelGrid columns="3" cellpadding="10">
+					
+						<p:outputLabel for="nroSocio" value="Numero de socio:" />
+						<p:inputText id="nroSocio" value="#{editarSocioMB.socio.nroSocio}"  label="nroSocio" disabled="true">
+            			</p:inputText>
+            			<p:message for="nroSocio" display="icon" />
+
+						<p:outputLabel for="ci" value="CI:" />
+				        <p:inputMask id="ci" value="#{editarSocioMB.socio.ci}-#{editarSocioMB.socio.barraCi}" disabled="true" mask="9999999-9" />
+						<p:message for="ci" display="icon" />
+				        
+						<p:outputLabel for="fechaIngreso" value="Fecha de ingreso:" />
+						<p:calendar id="fechaIngreso" value="#{editarSocioMB.socio.fechaIngreso}" locale="es" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="fechaIngreso" display="icon" />
+						
+						<p:outputLabel for="fechaEgreso" value="Fecha de ingreso:"/>
+						<p:calendar id="fechaEgreso" value="#{editarSocioMB.socio.fechaEgreso}" pattern="dd-MM-yyyy" mask="true" />
+						<p:message for="fechaEgreso" display="icon" />
+
+						<p:outputLabel for="activo" value="Activo:" required="true"/>
+						<p:selectOneRadio id="activo" value="#{editarSocioMB.socio.activo}">
+							<f:selectItem itemLabel="Si" itemValue="true" />
+            				<f:selectItem itemLabel="No" itemValue="false" />
+						</p:selectOneRadio>
+						<p:message for="activo" display="icon" />
+						
+						<p:outputLabel for="jubilado" value="Jubilado:" required="true"/>
+						<p:selectOneRadio id="jubilado" value="#{editarSocioMB.socio.jubilado}" >
+							<f:selectItem itemLabel="Si" itemValue="true" />
+            				<f:selectItem itemLabel="No" itemValue="false" />
+						</p:selectOneRadio>
+						<p:message for="jubilado" display="icon" />
+						
+
+						<p:outputLabel for="primerNombre" value="Primer nombre:" />
+						<p:inputText id="primerNombre" value="#{editarSocioMB.socio.primerNombre}" required="true" label="primerNombre">
+            			</p:inputText>
+            			<p:message for="primerNombre" display="icon" />
+
+						<p:outputLabel for="segundoNombre" value="Segundo nombre:" />
+						<p:inputText id="segundoNombre" value="#{editarSocioMB.socio.segundoNombre}"  label="segundoNombre">
+            			</p:inputText>
+            			<p:message for="segundoNombre" display="icon" />
+
+						<p:outputLabel for="primerApellido" value="Primer apellido:" />
+						<p:inputText id="primerApellido" value="#{editarSocioMB.socio.primerApellido}" required="true" label="primerApellido">
+            			</p:inputText>
+            			<p:message for="primerApellido" display="icon" />
+
+						<p:outputLabel for="segundoApellido" value="Segundo apellido:" />
+						<p:inputText id="segundoApellido" value="#{editarSocioMB.socio.segundoApellido}" label="segundoApellido">
+            			</p:inputText>
+            			<p:message for="segundoApellido" display="icon" />
+            			
+            			<p:outputLabel for="direccion" value="Direccion:" />
+						<p:inputText id="direccion" value="#{editarSocioMB.socio.direccion}" required="true" label="direccion">
+                			<f:validateLength minimum="2" />
+            			</p:inputText>
+            			<p:message for="direccion" display="icon" />
+
+            			<p:outputLabel for="direccionNumero" value="Numero:" />
+						<p:inputText id="direccionNumero" value="#{editarSocioMB.socio.direccionNumero}" required="true" label="direccionNumero">
+                			<f:validateLength minimum="2" />
+            			</p:inputText>
+            			<p:message for="direccionNumero" display="icon" />
+
+            			<p:outputLabel for="apto" value="Apto:" />
+						<p:inputText id="apto" value="#{editarSocioMB.socio.apto}"  label="apto">
+            			</p:inputText>
+            			<p:message for="apto" display="icon" />
+            			
+            			<p:outputLabel for="telefono" value="Telefono:" />
+						<p:inputText id="telefono" value="#{editarSocioMB.socio.telefono}"  label="telefono">
+            			</p:inputText>
+            			<p:message for="telefono" display="icon" />
+            			
+						<p:outputLabel for="celular" value="Celular:" />
+				        <p:inputMask id="celular" value="#{editarSocioMB.socio.celular}" mask="999999999" required="true"/>
+            			<p:message for="celular" display="icon" />
+            			
+						<p:outputLabel for="email" value="E-mail:" />
+						<p:inputText id="email" value="#{editarSocioMB.socio.email}" disabled="true" required="true" label="email" validatorMessage="El formato de correo electronico no es valido">
+ 							<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+ 						</p:inputText>
+            			<p:message for="email" display="icon" />
+
+
+             			
+						<p:outputLabel for="cantDormitorios" value="Cant. de dormitorios" />
+						<p:selectOneMenu id="cantDormitorios" value="#{editarSocioMB.socio.cantDormitorios}" style="width:175px">
+							<f:selectItem itemLabel="Seleccione...." itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+							<f:selectItem itemLabel="4" itemValue="4" />
+						</p:selectOneMenu>
+						<p:message for="cantDormitorios" display="icon" />
+						
+						 <p:commandButton value="Agregar" action="#{editarSocioMB.actualizarDatosSocio}" update="@form" icon="pi pi-check"/>
+            			
+				
+  					</h:panelGrid>
+  				</p:panel>
+  			</h:form>
+	            		
+		</ui:define>
+		    
+	</ui:composition>
+</body> 
+</html>
