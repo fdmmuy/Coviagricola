@@ -18,4 +18,9 @@ public class CuentaEJB implements CuentaLocal {
 		return socioDAO.obtenerSocioPorToken(token);
 	}
 
+	@Override
+	public void activarCuenta(String email, String pass) {
+		socioDAO.activarCuenta(email, pass);
+	}
+
 }

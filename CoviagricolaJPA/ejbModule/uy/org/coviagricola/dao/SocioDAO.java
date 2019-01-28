@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import uy.org.coviagricola.dto.SocioDTO;
 import uy.org.coviagricola.entity.ActivarCuenta;
+import uy.org.coviagricola.entity.Login;
+import uy.org.coviagricola.entity.Roles;
 import uy.org.coviagricola.entity.Socio;
 import uy.org.coviagricola.exception.CoviagricolaException;
 
@@ -135,6 +137,25 @@ public class SocioDAO {
 		String email=q.getSingleResult();
 		Socio socio=obtenerSocioDTOPorMail(email);
 		return toDTO(socio);
+		
+	}
+
+	public void activarCuenta(String email, String pass) {
+		
+		Login login=new Login();
+		login.setEmail(email);
+		login.setPassword(pass);
+		em.persist(login);
+		
+		Roles rol=new Roles();
+		rol.setEmail(email);
+		rol.setRole("USER");
+		em.persist(rol);
+		
+		Socio socio= obtenerSocioDTOPorMail(email);
+		socio.setCuentaActiva(true);
+		em.persist(socio);
+		
 		
 	}
 	

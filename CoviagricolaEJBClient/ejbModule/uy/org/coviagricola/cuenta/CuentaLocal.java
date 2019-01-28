@@ -8,5 +8,7 @@ import uy.org.coviagricola.dto.SocioDTO;
 public interface CuentaLocal {
 	
 	public SocioDTO obtenerUsuarioPorToken(String token);
+	
+	public void activarCuenta(String mail,String pass);
 
 }

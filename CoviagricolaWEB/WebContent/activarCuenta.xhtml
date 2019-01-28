@@ -38,18 +38,18 @@
 							<p:messages id="msgs" />
  							<fieldset>
 								<div class="form-group">
-									<p:inputText id="password" type="password" required="true" label="Password" styleClass="form-control" placeholder="Password" requiredMessage="Ingrese password">
+									<p:inputText id="password" value="#{activarCuentaMB.password}" type="password" required="true" label="Password" styleClass="form-control" placeholder="Password" requiredMessage="Ingrese password">
             						</p:inputText>
             					</div>
             						
             					<div class="form-group">
-									<p:inputText id="repetirPassword" type="password" required="true" label="repetirPassword" styleClass="form-control"  placeholder="Repetir password">
+									<p:inputText id="repetirPassword" value="#{activarCuentaMB.repetirPassword}" type="password" required="true" label="repetirPassword" styleClass="form-control"  placeholder="Repetir password">
             						</p:inputText>
             						
             						
           						</div>
             					<br/>
-            					<h:commandButton value="Activar"   styleClass="btn btn-lg btn-success btn-block" update="@form"/>
+            					<h:commandButton value="Activar"  action="#{activarCuentaMB.activarCuenta}" styleClass="btn btn-lg btn-success btn-block" update="@form"/>
             				</fieldset>
                         
                         

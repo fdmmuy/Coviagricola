@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -19,6 +20,8 @@ public class ActivarCuentaMB {
 	CuentaLocal cuenta;
 	
 	private String token;
+	private String password;
+	private String repetirPassword;
 	private SocioDTO socio;
 	
 	@PostConstruct
@@ -26,9 +29,22 @@ public class ActivarCuentaMB {
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String token=params.get("token");
 		socio=cuenta.obtenerUsuarioPorToken(token);
-		System.out.println("Se obtuvo el usuario:"+socio.getEmail());
 	}
 
+	public void activarCuenta() {
+		if(password.equals(repetirPassword)) {
+			cuenta.activarCuenta(socio.getEmail(), password);
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Su usuario se a activado correctamente",  null) );
+
+		}
+		else {
+	        FacesContext context = FacesContext.getCurrentInstance();
+	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Las claves ingresadas son diferentes",  null) );
+
+		}
+	}
+	
 	public String getToken() {
 		return token;
 	}
@@ -43,6 +59,22 @@ public class ActivarCuentaMB {
 
 	public void setSocio(SocioDTO socio) {
 		this.socio = socio;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRepetirPassword() {
+		return repetirPassword;
+	}
+
+	public void setRepetirPassword(String repetirPassword) {
+		this.repetirPassword = repetirPassword;
 	}
 	
 	
