@@ -3,6 +3,8 @@ package uy.org.coviagricola.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 public class SocioDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,7 +35,12 @@ public class SocioDTO implements Serializable {
 	
 	private int cantDormitorios;
 	
+	@Column
+	private boolean cuentaActiva;
+	
 	private boolean seleccionado;
+	
+	
 	
 	public SocioDTO() {
 		super();
@@ -239,6 +246,22 @@ public class SocioDTO implements Serializable {
 	public void setSeleccionado(boolean seleccionado) {
 		this.seleccionado = seleccionado;
 	}
+
+
+	public boolean isCuentaActiva() {
+		return cuentaActiva;
+	}
+	
+	public boolean getCuentaActiva() {
+		return cuentaActiva;
+	}	
+
+
+	public void setCuentaActiva(boolean cuentaActiva) {
+		this.cuentaActiva = cuentaActiva;
+	}
+	
+	
 	
 
 	

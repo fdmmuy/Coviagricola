@@ -1,19 +1,16 @@
 package uy.org.coviagricola.dao;
 
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-
+import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-import org.apache.commons.beanutils.BeanUtils;
-
 import uy.org.coviagricola.dto.SocioDTO;
+import uy.org.coviagricola.entity.ActivarCuenta;
 import uy.org.coviagricola.entity.Socio;
 import uy.org.coviagricola.exception.CoviagricolaException;
 
@@ -23,7 +20,7 @@ public class SocioDAO {
 	@PersistenceContext(unitName = "CoviagricolaJPA")
 	protected EntityManager em;
 	
-	
+
 	public void agregarSocio(SocioDTO socio) throws CoviagricolaException{
 
 		/*Restricciones: nroSocio, ci, email UNIQUE
@@ -39,8 +36,18 @@ public class SocioDAO {
 		
 		Socio socioEntity=new Socio();
 		dtoToEntity(socio,socioEntity);
+		
+		Calendar cal = Calendar.getInstance();
+		String token = UUID.randomUUID().toString().toUpperCase()+ cal.getTimeInMillis();
+		
+		ActivarCuenta activarCuenta = new ActivarCuenta();
+		activarCuenta.setEmail(socioEntity.getEmail());
+		activarCuenta.setToken(token);
+		
 		try {
 			em.persist(socioEntity);
+			em.persist(activarCuenta);
+			System.out.println(">>>>>>>>URL: http://localhost:8080/Coviagricola/activarCuenta.xhtml?token="+activarCuenta.getToken());
 		} catch (Exception e) {
 			throw new CoviagricolaException("Error al intentar guardar en la base de datos");
 		}
@@ -117,18 +124,20 @@ public class SocioDAO {
 		TypedQuery<Socio> q=em.createNamedQuery("Socio.ObtenerSocioNroSocio",Socio.class);
 		q.setParameter("nroSocio", nroSocio);
 		Socio socioEntity=q.getSingleResult();
-		SocioDTO socioDTO=new SocioDTO();
-		try {
-			BeanUtils.copyProperties(socioDTO, socioEntity);
-			return socioDTO;
-		} catch (IllegalAccessException e) {
-			return null;
-		} catch (InvocationTargetException e) {
-			return null;
-		}
-
+		SocioDTO socioDTO=toDTO(socioEntity);
+		return socioDTO;
+		
 	}
 
+	public SocioDTO  obtenerSocioPorToken(String token) {
+		TypedQuery<String> q=em.createNamedQuery("ActivarCuenta.ObtenerEmailPorCuenta",String.class);
+		q.setParameter("token", token);
+		String email=q.getSingleResult();
+		Socio socio=obtenerSocioDTOPorMail(email);
+		return toDTO(socio);
+		
+	}
+	
 	public SocioDTO toDTO(Socio socioEntity) {
 		
 		SocioDTO socio= new SocioDTO();
@@ -151,6 +160,7 @@ public class SocioDAO {
 		socio.setDireccion(socioEntity.getDireccion());
 		socio.setDireccionNumero(socioEntity.getDireccionNumero());
 		socio.setApto(socioEntity.getApto());
+		socio.setCuentaActiva(socioEntity.isCuentaActiva());
 		return socio;
 	}
 	
@@ -175,6 +185,7 @@ public class SocioDAO {
 		socio.setDireccion(socioDTO.getDireccion());
 		socio.setDireccionNumero(socioDTO.getDireccionNumero());
 		socio.setApto(socioDTO.getApto());
+		socio.setCuentaActiva(socioDTO.getCuentaActiva());
 
 	}
 }

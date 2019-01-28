@@ -75,6 +75,8 @@ public class Socio implements Serializable {
 	@Column
 	private String apto;
 	
+	@Column
+	private boolean cuentaActiva;
 	
 	
 	@OneToMany(  mappedBy = "socio", cascade = CascadeType.ALL,orphanRemoval = true)
@@ -236,6 +238,23 @@ public class Socio implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public boolean isCuentaActiva() {
+		return cuentaActiva;
+	}
+
+	public void setCuentaActiva(boolean cuentaActiva) {
+		this.cuentaActiva = cuentaActiva;
+	}
+
+	public List<Aporte> getAportes() {
+		return aportes;
+	}
+
+	public void setAportes(List<Aporte> aportes) {
+		this.aportes = aportes;
+	}
+	
 	
    
 }

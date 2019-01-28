@@ -9,6 +9,7 @@ import uy.org.coviagricola.dao.SocioDAO;
 import uy.org.coviagricola.dto.SocioDTO;
 import uy.org.coviagricola.entity.Socio;
 import uy.org.coviagricola.exception.CoviagricolaException;
+import uy.org.coviagricola.mail.Mail;
 
 @Stateless
 public class SocioEJB implements SocioLocal {
@@ -59,4 +60,8 @@ public class SocioEJB implements SocioLocal {
 	}
 
 
+	public void pruebaMail() {
+		Mail m= new Mail();
+		m.sendEmail("np-responde@gmail.com", "fdmmuy@hotmail.com", "Activar cuenta", "Activar cuenta ingreso aqui");
+	}
 }

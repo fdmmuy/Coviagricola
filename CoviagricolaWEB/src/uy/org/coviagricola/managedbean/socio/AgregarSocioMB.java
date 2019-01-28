@@ -1,5 +1,9 @@
 package uy.org.coviagricola.managedbean.socio;
 
+import java.security.SecureRandom;
+import java.util.Calendar;
+import java.util.UUID;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;import javax.faces.application.FacesMessage.Severity;
@@ -30,6 +34,7 @@ public class AgregarSocioMB {
 	
 	public void agregarSocio() {
 		try {
+			socio.setCuentaActiva(false);
 			socioLocal.agregarSocio(socio);
 	        FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Socio "+socio.getNroSocio()+ " agregado correctamente",  null) );
@@ -74,5 +79,15 @@ public class AgregarSocioMB {
 		}
 	}
 	
+	public void pruebaMail() {
+
+		
+		Calendar cal = Calendar.getInstance();
+		String token = UUID.randomUUID().toString().toUpperCase() 
+			      + cal.getTimeInMillis();
+		System.out.println(">>>>>Token: "+token);
+
+		
+	}
 	
 }

@@ -18,5 +18,7 @@ public interface SocioLocal {
 	
 	public SocioDTO obtenerSocioPorNumero(int nroSocio);
 	
+	public void pruebaMail();
+	
 
 }

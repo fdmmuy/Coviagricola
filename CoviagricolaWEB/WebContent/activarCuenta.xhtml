@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <title>Coviagricola 1</title>
+    <!-- Core CSS - Include with every page -->
+    <link href="/Coviagricola/paginas/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="/Coviagricola/paginas/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Coviagricola/paginas/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+   <link href="/Coviagricola/paginas/assets/css/style.css" rel="stylesheet" />
+   <link href="/Coviagricola/paginas/assets/css/main-style.css" rel="stylesheet" />
+
+</h:head>
+
+<body class="body-Login-back">
+
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
+                </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">                  
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Activar cuenta</h3>
+                    </div>
+                    <div class="panel-body">
+                        
+                        <h:form>
+                        
+                        	<h:outputText value="#{activarCuentaMB.socio.email}"></h:outputText>
+                        
+							<p:messages id="msgs" />
+ 							<fieldset>
+								<div class="form-group">
+									<p:inputText id="password" type="password" required="true" label="Password" styleClass="form-control" placeholder="Password" requiredMessage="Ingrese password">
+            						</p:inputText>
+            					</div>
+            						
+            					<div class="form-group">
+									<p:inputText id="repetirPassword" type="password" required="true" label="repetirPassword" styleClass="form-control"  placeholder="Repetir password">
+            						</p:inputText>
+            						
+            						
+          						</div>
+            					<br/>
+            					<h:commandButton value="Activar"   styleClass="btn btn-lg btn-success btn-block" update="@form"/>
+            				</fieldset>
+                        
+                        
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Core Scripts - Include with every page -->
+    <script src="/Coviagricola/paginas/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="/Coviagricola/paginas/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/Coviagricola/paginas/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+</body>
+
+</html>
