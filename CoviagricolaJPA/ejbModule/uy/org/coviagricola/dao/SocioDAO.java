@@ -17,10 +17,10 @@ import uy.org.coviagricola.exception.CoviagricolaException;
 @Stateless
 public class SocioDAO {
 	
+	
 	@PersistenceContext(unitName = "CoviagricolaJPA")
 	protected EntityManager em;
 	
-
 	public void agregarSocio(SocioDTO socio) throws CoviagricolaException{
 
 		/*Restricciones: nroSocio, ci, email UNIQUE
